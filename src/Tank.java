@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked {
+public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable{
     {
 
         this.collectionsWhereIAm = new ArrayList<>();
@@ -32,6 +32,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void moveRight() {
         //当油量大于等于5且存活可以移动时
         if (oil >= 5 && this.strength>0) {
+            img = ImgHelper.getImage("资源/Tank_Right.png");
             //移动距离15
             this.x += 10;
             //油量-5
@@ -47,6 +48,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void moveLeft() {
         //当油量大于等于5且存活可以移动时
         if (oil >= 5 && this.strength>0) {
+            img = ImgHelper.getImage("资源/Tank_Left.png");
             //移动距离15
             this.x -= 10;
             //油量-5
@@ -62,6 +64,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void moveUp() {
         //当油量大于等于5且存活可以移动时
         if (oil >= 5 && this.strength>0) {
+            img = ImgHelper.getImage("资源/Tank_Up.png");
             //移动距离15
             this.y -= 10;
             //油量-5
@@ -77,6 +80,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void moveDown() {
         //当油量大于等于5且存活可以移动时
         if (oil >= 5 && this.strength>0) {
+            img = ImgHelper.getImage("资源/Tank_Down.png");
             //移动距离15
             this.y += 10;
             //油量-5
@@ -114,8 +118,8 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
             //判断是否与其他对象重叠
             if(OverlapUtil.checkOverlap(this,overlapSensitive) && overlapSensitive != this){
                 //判断重叠的对象是否在canTransferStrengthSet集合里
-                if(Commons.canTransferStrengthSet.contains(overlapSensitive)){
-                   this.addBlood((CanTransferStrength)overlapSensitive);
+                if(Commons.canProvideStrengthSet.contains(overlapSensitive)){
+                   this.receiveStrength((CanProvideStrength)overlapSensitive);
                 }
                 //判断重叠的对象是否在canBeAttackedSet集合里
                 if(Commons.canBeAttackedSet.contains(overlapSensitive)){
@@ -126,7 +130,8 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     }
 
     //加血
-    public void addBlood(CanTransferStrength object){
+    @Override
+    public void receiveStrength(CanProvideStrength object){
         this.strength += object.transferStrength();
     }
 
@@ -219,19 +224,55 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void drawMyself(Graphics g) {
         g.drawString("tank "+"油量"+this.oil+"血量"+this.strength+"炮弹剩余:"+this.shellNumber +"个",this.x,this.y-10);
         //获得tank.png文件对应的Image类型对象
-        Image img = ImgHelper.getImage("资源/tank1.png");
         //画出角色
         g.drawImage(img,this.x,this.y,this.w,this.h,null);
         g.drawRect(this.x,this.y,this.w,this.h);
     }
+
     //攻击
+    @Override
     public void fire(){
+        int shellX = 0;
+        int shellY = 0;
+        int shellW = 0;
+        int shellH = 0;
         //炮弹初始位置在在侧。炮弹方向取决于当前的方向。
-        Shell shell = new Shell(this.x-50,this.y,15,50, this.currentDirection);
+        switch ( this.currentDirection) {
+            case Movable.RIGHT:
+               shellX = this.x+85;
+               shellY = this.y;
+                shellW = 50;
+                shellH = 15;
+                break;
+            case Movable.DOWN:
+                shellX = this.x + 35;
+                shellY = this.y + 80;
+                shellW = 15;
+                shellH = 50;
+                break;
+            case Movable.LEFT:
+                shellX = this.x-50;
+                shellY = this.y;
+                shellW = 50;
+                shellH = 15;
+                break;
+            case Movable.UP:
+                shellX = this.x+35;
+                shellY = this.y-55;
+                shellW = 15;
+                shellH = 50;
+                break;
+        }
+        Shell shell = new Shell(shellX,shellY,shellW,shellH, this.currentDirection);
         Commons.executorService.execute(shell);
         this.shellNumber--;
     }
-//    //一直执行左移动
+
+    @Override
+    public void callForArtillery() {
+
+    }
+    //    //一直执行左移动
 //    @Override
 //    public void run() {
 //        while (this.oil>0){
@@ -241,7 +282,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
 //            Helper.sleep(200);
 //        }
 //    }
-
+    Image img;
     //x,y为左上角坐标
     private int x;
     private int y;
@@ -250,6 +291,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     private int w;
     //血量
     private int strength = 200;
+
     //油量
     private int oil = 200;
     //炮弹剩余量

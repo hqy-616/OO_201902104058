@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FirstAid implements Shape, CanTransferStrength, OverlapSensitive,Runnable{
+public class FirstAid implements Shape, CanProvideStrength, OverlapSensitive,Runnable{
     {
         this.collectionsWhereIAm = new ArrayList<>();
         /*
@@ -14,7 +14,7 @@ public class FirstAid implements Shape, CanTransferStrength, OverlapSensitive,Ru
         Helper.addObjectToCollectionCollection(
                 this.collectionsWhereIAm,
                 this,
-                Commons.canTransferStrengthSet,
+                Commons.canProvideStrengthSet,
                 Commons.shapeSet,
                 Commons.overlapSensitiveSet
         );

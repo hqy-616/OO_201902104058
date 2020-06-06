@@ -21,7 +21,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
     }
     public Shell() {
     }
-    public Shell(int x, int y, int h, int w, int direction) {
+    public Shell(int x, int y, int w, int h, int direction) {
         this.x = x;
         this.y = y;
         this.h = h;
@@ -31,6 +31,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveRight() {
+        img = ImgHelper.getImage("资源/Shell_Right.png");
         //右移
         this.x += 10;
         //检测重叠
@@ -39,6 +40,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveLeft() {
+        img = ImgHelper.getImage("资源/Shell_Left.png");
         //左移
         this.x -= 10;
         //检测重叠
@@ -47,6 +49,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveUp() {
+        img = ImgHelper.getImage("资源/Shell_Up.png");
         //上移
         this.y -= 10;
         //检测重叠
@@ -55,6 +58,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveDown() {
+        img = ImgHelper.getImage("资源/Shell_Down.png");
         //下移
         this.y += 10;
         //检测重叠
@@ -127,8 +131,6 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void drawMyself(Graphics g) {
-            //获得Bullet.png文件对应的Image类型对象
-            Image img = ImgHelper.getImage("资源/子弹.png");
             //画出角色
             g.drawImage(img, this.x, this.y, this.w, this.h, null);
             g.drawRect(this.x, this.y, this.w, this.h);
@@ -145,16 +147,16 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
             //移动
             switch (direction) {
                 case Movable.RIGHT:
-                    this.x += 10;
+                    this.moveRight();
                     break;
                 case Movable.DOWN:
-                    this.y += 10;
+                    this.moveDown();
                     break;
                 case Movable.LEFT:
-                    this.x -= 10;
+                    this.moveLeft();
                     break;
                 case Movable.UP:
-                    this.y -= 10;
+                    this.moveUp();
                     break;
             }
             //重绘画板
@@ -174,6 +176,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
         //从自己所在的集合中删除
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
     }
+    Image img;
     //x,y为左上角坐标
     private int x;
     private int y;

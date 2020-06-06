@@ -12,7 +12,7 @@ public class Commons {
     //可能重叠的对象的集合
     public static Set<OverlapSensitive> overlapSensitiveSet = new CopyOnWriteArraySet<OverlapSensitive>();
     //可以索要生命值的对象的集合
-    public static Set<CanTransferStrength> canTransferStrengthSet= new CopyOnWriteArraySet<CanTransferStrength>();
+    public static Set<CanProvideStrength> canProvideStrengthSet = new CopyOnWriteArraySet<CanProvideStrength>();
     //可以攻击的对象的集合
     public static Set<CanBeAttacked> canBeAttackedSet= new CopyOnWriteArraySet<CanBeAttacked>();
     //可以被画出的对象的集合

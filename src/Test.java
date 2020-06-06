@@ -12,8 +12,8 @@ public class Test {
         Set<OverlapSensitive> overlapSensitiveSet = new CopyOnWriteArraySet<>();
         Commons.overlapSensitiveSet = overlapSensitiveSet;
         //可以加血的集合
-        Set<CanTransferStrength> canTransferStrengthSet = new HashSet<>();
-        Commons.canTransferStrengthSet = canTransferStrengthSet;
+        Set<CanProvideStrength> canProvideStrengthSet = new HashSet<>();
+        Commons.canProvideStrengthSet = canProvideStrengthSet;
         //可被攻击的集合
         Set<CanBeAttacked> canBeAttackedSets = new CopyOnWriteArraySet<>();
         Commons.canBeAttackedSet =  canBeAttackedSets;
