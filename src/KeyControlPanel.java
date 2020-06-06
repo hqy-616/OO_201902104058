@@ -23,13 +23,13 @@ public final class KeyControlPanel extends JPanel {
 					toMove.moveUp();
 				}else if(keyCode==KeyEvent.VK_DOWN){
 					toMove.moveDown();
-				}else if(keyCode==KeyEvent.VK_SPACE){
-//					tank.fire();
-//				}else if (keyCode==KeyEvent.VK_W){
-//					toMove.oneKeyInvincible();
+				}/*else if(keyCode==KeyEvent.VK_SPACE){
+					Tank tank = (Tank)toMove;
+					tank.fire();
+				}else if (keyCode==KeyEvent.VK_W){*/
+//				toMove.oneKeyInvincible();
 //				}else{
-
-				}
+//			}
 				MyFrame drawingFrame = (MyFrame)(KeyControlPanel.this.getRootPane().getParent());
 				Commons.drawingPanel.repaint();
 			}

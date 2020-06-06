@@ -145,16 +145,16 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
             //移动
             switch (direction) {
                 case Movable.RIGHT:
-                    this.x -= 10;
-                    break;
-                case Movable.DOWN:
-                    this.y -= 10;
-                    break;
-                case Movable.LEFT:
                     this.x += 10;
                     break;
-                case Movable.UP:
+                case Movable.DOWN:
                     this.y += 10;
+                    break;
+                case Movable.LEFT:
+                    this.x -= 10;
+                    break;
+                case Movable.UP:
+                    this.y -= 10;
                     break;
             }
             //重绘画板
