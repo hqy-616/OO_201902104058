@@ -3,32 +3,28 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public final class KeyControlPanel extends JPanel {
-	private Movable toMove;
+	private Controllable toControl;
 
-	public KeyControlPanel(Movable toMove) {
-		this.toMove = toMove;
-		this.setControls(toMove);
+	public KeyControlPanel(Controllable toControl) {
+		this.toControl = toControl;
+		this.setControls(toControl);
 	}
 
-	private void setControls(final Movable toMove) {
+	private void setControls(final Controllable toControl) {
 		this.setFocusable(true);
 		this.addKeyListener(new KeyListener(){
 			public void keyPressed(KeyEvent e) {
 				int keyCode = e.getKeyCode();
 				if(keyCode==KeyEvent.VK_RIGHT){
-					toMove.moveRight();
+					toControl.moveRight();
 				}else if(keyCode==KeyEvent.VK_LEFT){
-					toMove.moveLeft();
+					toControl.moveLeft();
 				}else if(keyCode==KeyEvent.VK_UP){
-					toMove.moveUp();
+					toControl.moveUp();
 				}else if(keyCode==KeyEvent.VK_DOWN){
-					toMove.moveDown();
+					toControl.moveDown();
 				}else if(keyCode==KeyEvent.VK_SPACE){
-//					tank.fire();
-//				}else if (keyCode==KeyEvent.VK_W){
-//					toMove.oneKeyInvincible();
-//				}else{
-
+					toControl.fire();
 				}
 				MyFrame drawingFrame = (MyFrame)(KeyControlPanel.this.getRootPane().getParent());
 				Commons.drawingPanel.repaint();
