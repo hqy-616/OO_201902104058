@@ -31,7 +31,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void moveRight() {
         //当油量大于等于5且存活可以移动时
-        if (oil >= 5 && this.strength>0) {
+        if (oil >= 5 && this.strength>0&&Commons.isStart==Commons.start) {
             img = ImgHelper.getImage("imgs/Tank_Right.png");
             //移动距离15
             this.x += 10;
@@ -48,7 +48,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void moveLeft() {
         //当油量大于等于5且存活可以移动时
-        if (oil >= 5 && this.strength>0) {
+        if (oil >= 5 && this.strength>0&&Commons.isStart==Commons.start) {
             img = ImgHelper.getImage("imgs/Tank_Left.png");
             //移动距离15
             this.x -= 10;
@@ -64,7 +64,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void moveUp() {
         //当油量大于等于5且存活可以移动时
-        if (oil >= 5 && this.strength>0) {
+        if (oil >= 5 && this.strength>0&&Commons.isStart==Commons.start) {
             img = ImgHelper.getImage("imgs/Tank_Up.png");
             //移动距离15
             this.y -= 10;
@@ -80,7 +80,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void moveDown() {
         //当油量大于等于5且存活可以移动时
-        if (oil >= 5 && this.strength>0) {
+        if (oil >= 5 && this.strength>0&&Commons.isStart==Commons.start) {
             img = ImgHelper.getImage("imgs/Tank_Down.png");
             //移动距离15
             this.y += 10;
@@ -234,48 +234,50 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击
     @Override
     public void fire(){
-        //当CD为0时执行攻击
-        if(this.CD == 0){
-            //攻击后CD为1
-            this.CD = 1;
-            //shellX,shellY为炮弹左上角坐标
-            int shellX = 0;
-            int shellY = 0;
-            //shellW,shellH为炮弹宽和高
-            int shellW = 0;
-            int shellH = 0;
-            //炮弹方向取决于坦克当前的方向。
-            switch ( this.currentDirection) {
-                case Movable.RIGHT:
-                    shellX = this.x+50;
-                    shellY = this.y+15;
-                    shellW = 50;
-                    shellH = 15;
-                    break;
-                case Movable.DOWN:
-                    shellX = this.x + 20;
-                    shellY = this.y + 45;
-                    shellW = 15;
-                    shellH = 50;
-                    break;
-                case Movable.LEFT:
-                    shellX = this.x-40;
-                    shellY = this.y+15;
-                    shellW = 50;
-                    shellH = 15;
-                    break;
-                case Movable.UP:
-                    shellX = this.x+20;
-                    shellY = this.y-45;
-                    shellW = 15;
-                    shellH = 50;
-                    break;
-            }
-            Shell shell = new Shell(shellX,shellY,shellW,shellH, this.currentDirection);
-            Commons.executorService.execute(shell);
-            //炮弹数量减一
-            this.shellNumber--;
-        }
+       if(Commons.isStart==Commons.start) {
+           //当CD为0时执行攻击
+           if (this.CD == 0) {
+               //攻击后CD为1
+               this.CD = 1;
+               //shellX,shellY为炮弹左上角坐标
+               int shellX = 0;
+               int shellY = 0;
+               //shellW,shellH为炮弹宽和高
+               int shellW = 0;
+               int shellH = 0;
+               //炮弹方向取决于坦克当前的方向。
+               switch (this.currentDirection) {
+                   case Movable.RIGHT:
+                       shellX = this.x + 50;
+                       shellY = this.y + 15;
+                       shellW = 50;
+                       shellH = 15;
+                       break;
+                   case Movable.DOWN:
+                       shellX = this.x + 20;
+                       shellY = this.y + 45;
+                       shellW = 15;
+                       shellH = 50;
+                       break;
+                   case Movable.LEFT:
+                       shellX = this.x - 40;
+                       shellY = this.y + 15;
+                       shellW = 50;
+                       shellH = 15;
+                       break;
+                   case Movable.UP:
+                       shellX = this.x + 20;
+                       shellY = this.y - 45;
+                       shellW = 15;
+                       shellH = 50;
+                       break;
+               }
+               Shell shell = new Shell(shellX, shellY, shellW, shellH, this.currentDirection);
+               Commons.executorService.execute(shell);
+               //炮弹数量减一
+               this.shellNumber--;
+           }
+       }
     }
     //减少CD
     public void reduceCD(){
@@ -310,7 +312,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击冷却时间
     private int CD;
     //油量
-    private int oil = 200;
+    private int oil = 500;
     //炮弹剩余量
     private int shellNumber;
     //最后一次移动的方向
