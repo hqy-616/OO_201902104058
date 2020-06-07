@@ -42,23 +42,26 @@ public class DownCounter implements Shape,Runnable{
     //执行时间减一
     @Override
     public void run(){
-        try {
-            Thread.sleep(30);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        for (int i = 60; i >=0 ; i--) {
-            judgingTime();
-            outPut();
-            //刷新面板
-            Commons.drawingPanel.repaint();
             try {
-                //睡眠20ms
-                Thread.sleep(1000);
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+            for (int i = 60; i > 0; i--) {
+                if(Commons.isSuccess==Commons.success)
+                    break;
+                    outPut();
+                    judgingTime();
+
+                    //刷新面板
+                    Commons.drawingPanel.repaint();
+                try {
+                    //睡眠20ms
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
     }
     public static int time =60;
     //x,y为左上角坐标

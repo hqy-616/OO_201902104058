@@ -13,6 +13,8 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
     private boolean exist = true;
     //炮弹所在的所有集合
     private Collection<Collection> whereIamIn;
+    //剩余时间
+    private int time = 6;
     //左上角横坐标
     private int x = 250;
     //左上角纵坐标
@@ -100,15 +102,18 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
 
     @Override
     public void run() {
-        Helper.delay(5000);
-        Commons.drawingPanel.repaint();
-        for(int i = 0;i < 6;i++){
-            this.w *= 1.2;
-            this.h *= 1.2;
-            Helper.delay(100);
+        for(int i=0;i<6;i++){
+            Helper.delay(1000);
+            this.time--;
             Commons.drawingPanel.repaint();
         }
-        //炮弹10秒后消失
+        //体积扩大四倍
+        this.w *= 2;
+        this.h *= 2;
+        //延迟150毫秒，以便观察
+        Helper.delay(600);
+        Commons.drawingPanel.repaint();
+        //炮弹6秒后消失
         this.detectShellOverlap();
         this.die();
     }
