@@ -262,9 +262,11 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
                 shellH = 50;
                 break;
         }
-        Shell shell = new Shell(shellX,shellY,shellW,shellH, this.currentDirection);
-        Commons.executorService.execute(shell);
-        this.shellNumber--;
+        if(shellNumber>0) {
+            Shell shell = new Shell(shellX, shellY, shellW, shellH, this.currentDirection);
+            Commons.executorService.execute(shell);
+            this.shellNumber--;
+        }
     }
 
     @Override

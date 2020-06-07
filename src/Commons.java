@@ -19,4 +19,6 @@ public class Commons {
     public static Set<Shape> shapeSet = new CopyOnWriteArraySet<Shape>();
     //游戏终止器
     public static GameOver gameOver=new GameOver();
+    //积分
+    public static int integral=0;
 }
