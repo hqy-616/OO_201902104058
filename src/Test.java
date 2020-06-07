@@ -1,11 +1,14 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+
 public class Test {
     public static void main(String[] args) {
-        Tank tank = new Tank(400,30,50,50,30);
+        Tank tank = new Tank(400,30,80,80,30);
         FirstAid firstAid = new FirstAid(150,30,50,50);
         new Barrier(50,50,50,50);
         new Barrier(50,175,50,50);
         new Scoring(50,5,30,30);
-        Bomb bomb = new Bomb(20,60,50,20,5);
         DownCounter timer = new DownCounter(5,5,30,30);
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
@@ -18,8 +21,8 @@ public class Test {
         myFrame.setSize(600, 600);
         //使顶层框架可见
         myFrame.setVisible(true);
+//        Commons.executorService.execute(tank);
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
-        Commons.executorService.execute(tank);
     }
 }
