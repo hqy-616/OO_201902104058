@@ -17,4 +17,8 @@ public class Commons {
     public static Set<CanBeAttacked> canBeAttackedSet= new CopyOnWriteArraySet<CanBeAttacked>();
     //可以被画出的对象的集合
     public static Set<Shape> shapeSet = new CopyOnWriteArraySet<Shape>();
+    //游戏终止器
+    public static GameOver gameOver=new GameOver();
+    //积分
+    public static int integral=0;
 }

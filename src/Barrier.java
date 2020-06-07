@@ -64,6 +64,11 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     private void die(){
         //从自己存在的集合中删除自己
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
+        Commons.integral+=5;
+        //积分大于10游戏终止
+        if(Commons.integral>=10){
+            Commons.gameOver.victory();
+        }
     }
     //画出自己
     @Override
@@ -72,7 +77,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         //画出障碍物当前的状态
         g.drawString("barrier 血量:"+this.strength,this.x,this.y);
         //获得barrier.png文件对应的Image类型对象
-        Image image = ImgHelper.getImage("资源/barrier.png");
+        Image image = ImgHelper.getImage("imgs/barrier.png");
         //画出自己
         g.drawImage(image,this.x,this.y,this.w,this.h,null);
     }

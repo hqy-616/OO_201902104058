@@ -51,8 +51,13 @@ public class FirstAid implements Shape, CanProvideStrength, OverlapSensitive,Run
     //返回加血量
     @Override
     public double transferStrength() {
+        Commons.integral+=5;
         //加血后消失
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
+        //积分大于10终止游戏
+        if(Commons.integral>=10){
+            Commons.gameOver.victory();
+        }
         return 0.01*this.w*this.h;
     }
 
@@ -63,7 +68,7 @@ public class FirstAid implements Shape, CanProvideStrength, OverlapSensitive,Run
         //画出加油包当前的状态
         g.drawString("FistAid",this.x,this.y);
         //获得Bag.png文件对应的Image类型对象
-        Image image = ImgHelper.getImage("资源/Bag.png");
+        Image image = ImgHelper.getImage("imgs/Bag.png");
         //画出自己
         g.drawImage(image,this.x,this.y,this.w,this.h,null);
     }
