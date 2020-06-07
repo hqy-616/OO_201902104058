@@ -71,17 +71,4 @@ public class Helper {
         //如果满足条件就是重叠，返回true，反之false
         return (dx < (w1 + w2) / 2 && dy < (h1 + h2) / 2);
     }
-
-    //判断是否在攻击范围内
-    public static boolean checkAttackRange(OverlapSensitive overlaping, OverlapSensitive overlapped){
-        //两个对象的的中心坐标
-        int cx1 = overlaping.getCx();
-        int cy1 = overlaping.getCy();
-        int cx2 = overlapped.getCx();
-        int cy2 = overlapped.getCy();
-        //两个对象中心点之间的距离
-        double distance=Math.pow(Math.pow(cx1-cx2,2)+Math.pow(cy1-cy2,2),0.5);
-        //距离小于200即可攻击
-        return distance<200;
-    }
 }
