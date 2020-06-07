@@ -26,6 +26,11 @@ public class DownCounter implements Shape,Runnable{
     public void outPut(){
         DownCounter.time--;
     }
+    //判断时间
+    public void judgingTime(){
+        if(time<=0)
+            Commons.gameOver.defeat();
+    }
     //画出自己
     @Override
     public void drawMyself(Graphics g) {
@@ -43,6 +48,7 @@ public class DownCounter implements Shape,Runnable{
             e.printStackTrace();
         }
         for (int i = 60; i >=0 ; i--) {
+            judgingTime();
             outPut();
             //刷新面板
             Commons.drawingPanel.repaint();
@@ -54,7 +60,7 @@ public class DownCounter implements Shape,Runnable{
             }
         }
     }
-    public static int time = 60;
+    public static int time =60;
     //x,y为左上角坐标
     private int x;
     private int y;
