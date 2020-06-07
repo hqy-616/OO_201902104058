@@ -146,7 +146,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
 
     //作为CanBeAttack，受到受害者的反击时的行为
     @Override
-    public void counterAttacked(int damage) {
+    public void beCounterAttacked(int damage) {
         //减少生命值
         this.strength -= damage;
         //检查存活状态
@@ -198,7 +198,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
         }
         else {
             //以一半的伤害反击攻击者
-            offender.counterAttacked(this.damage / 2);
+            offender.beCounterAttacked(this.damage / 2);
         }
        /* if (this.checkAlive()) {
             //以一半的伤害反击攻击者
