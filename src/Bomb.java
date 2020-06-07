@@ -68,10 +68,10 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
     public static void main(String[] args) {
         Tank tank = new Tank(400, 30, 50, 50, 30);
         FirstAid firstAid = new FirstAid(150, 30, 50, 50);
-        new Barrier(50, 50, 50, 50);
+        new Barrier(50, 120, 50, 50);
         new Barrier(50, 175, 50, 50);
         new Scoring(50, 5, 30, 30);
-        new Bomb(80, 175, 50, 50, 20);
+        new Bomb(80, 130, 50, 50, 20);
 
         DownCounter timer = new DownCounter(5, 5, 30, 30);
         //创建控制面板对象，并使之关联tank对象
@@ -116,24 +116,23 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
     public void detectShellOverlap() {
         for (OverlapSensitive overlapSensitive : Commons.overlapSensitiveSet) {
             //判断公共的重叠集合中的对象是否在自己的攻击范围内
-            boolean overlapped = Helper.checkAttackRange(this, overlapSensitive);
+            boolean overlapped = Helper.checkOverlap(this, overlapSensitive);
             //公共的重叠集合中可能含有本对象，如果是本对象，跳过重叠
             if (overlapSensitive == this) {
                 continue;
             }
             //如果有元素在自己的攻击范围内并且炮弹存在
             if (overlapped && this.exist) {
-                //炮弹“挂掉”
-                this.die();
                 //如果对方在公共的被攻击集合中
                 if (Commons.canBeAttackedSet.contains(overlapSensitive)) {
                     //则进行强制类型转换
                     CanBeAttacked toAttack = (CanBeAttacked) overlapSensitive;
                     //并向他发送被攻击的消息
                     toAttack.attacked(this);
+                    this.exist = true;
                 }
             }
-        }
+        }this.exist = false;
     }
 
     @Override
