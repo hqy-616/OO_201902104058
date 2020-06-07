@@ -234,7 +234,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击
     @Override
     public void fire(){
-        //当CD为0是执行攻击
+        //当CD为0时执行攻击
         if(this.CD == 0){
             //攻击后CD为1
             this.CD = 1;
