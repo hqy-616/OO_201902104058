@@ -1,7 +1,15 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-
+/**
+ * 功能 ：终止游戏，显示游戏成功结束
+ *
+ * @author 侯广鑫 郭天宇
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @version 0.1
+ */
 
 public class Scoring implements Shape {
      {
@@ -27,7 +35,7 @@ public class Scoring implements Shape {
     @Override
     public void drawMyself(Graphics g) {
         //画出加积分器当前的状态
-        g.drawString(""+Commons.integral,this.x+8,this.y+17);
+        g.drawString("积分:" + Commons.integral, this.x + 8, this.y + 17);
         //画出自己
         g.drawRect(this.x,this.y,this.w,this.h);
     }

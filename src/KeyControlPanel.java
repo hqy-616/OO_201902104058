@@ -9,7 +9,6 @@ public final class KeyControlPanel extends JPanel {
 		this.toControl = toControl;
 		this.setControls(toControl);
 	}
-
 	private void setControls(final Controllable toControl) {
 		this.setFocusable(true);
 		this.addKeyListener(new KeyListener(){
@@ -30,7 +29,7 @@ public final class KeyControlPanel extends JPanel {
 				Commons.drawingPanel.repaint();
 			}
 			public void keyReleased(KeyEvent e) {}
-			public void keyTyped(KeyEvent e) {}			
+			public void keyTyped(KeyEvent e) {}
 		});
 	}
 }

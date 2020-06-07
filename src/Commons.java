@@ -21,4 +21,11 @@ public class Commons {
     public static GameOver gameOver=new GameOver();
     //积分
     public static int integral=0;
+    //开始标志
+    public static final int start=0;
+    public static final int end=1;
+    public static final int success=0;
+    public static final int loser=1;
+    public static int isStart;
+    public static int isSuccess;
 }
