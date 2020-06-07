@@ -5,6 +5,7 @@ public class Test {
         new Barrier(50,50,50,50);
         new Barrier(50,175,50,50);
         new Scoring(50,5,30,30);
+        Bomb bomb = new Bomb(20,60,50,20,5);
         DownCounter timer = new DownCounter(5,5,30,30);
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);

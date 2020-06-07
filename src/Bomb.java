@@ -56,7 +56,7 @@ public final class Bomb implements Shape,Runnable,OverlapSensitive,CanBeAttacked
         this.die();
     }
 
-    public void detectShellOverlap(){
+    private void detectShellOverlap(){
         for(OverlapSensitive overlapSensitive:Commons.overlapSensitiveSet){
             //判断公共的重叠集合中的对象是否在自己的攻击范围内
             boolean overlapped = Helper.checkAttackRange(this, overlapSensitive);
@@ -79,7 +79,7 @@ public final class Bomb implements Shape,Runnable,OverlapSensitive,CanBeAttacked
         }
     }
 
-    public void die(){
+    private void die(){
         //“挂掉”即不存在，所以将炮弹的存在状态设为false
         this.exist = false;
         //从自己所在的集合中删除
@@ -87,7 +87,7 @@ public final class Bomb implements Shape,Runnable,OverlapSensitive,CanBeAttacked
     }
 
     @Override
-    public void attacked(CanAttack attacker) {
+    public void attacked(CanAttack offender) {
         //炮弹被攻击后直接“挂掉”
         this.die();
     }
