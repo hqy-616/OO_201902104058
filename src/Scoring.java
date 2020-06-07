@@ -1,7 +1,15 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-
+/**
+ * 功能 ：终止游戏，显示游戏成功结束
+ *
+ * @author 侯广鑫 郭天宇
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @version 0.1
+ */
 
 public class Scoring implements Shape {
      {
