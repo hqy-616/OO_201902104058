@@ -1,10 +1,10 @@
 /**
- * 功能 ：
+ * 功能 ：30s内随机时间 产生十个急救包
  *
- * @author 这里写初始开发者
- * @author 这里写修改者
- * @author 这里写修改者
- * @author 这里写修改者
+ * @author  胡庆洋 谷娟娟
+ * @author  谷娟娟
+ * @author  胡庆洋
+ * @author  胡庆洋
  * @version 0.1
  */
 public class FirstAidFactory implements Runnable{
