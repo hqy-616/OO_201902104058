@@ -31,6 +31,6 @@ public final class KeyControlPanel extends JPanel {
 			}
 			public void keyReleased(KeyEvent e) {}
 			public void keyTyped(KeyEvent e) {}			
-		});		
+		});
 	}
 }

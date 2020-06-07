@@ -17,7 +17,7 @@ public class Test {
         //创建顶层框架，并使之关联画图和控制面板对象
         MyFrame myFrame = new MyFrame(drawingPanel,keyControlPanel);
         //为顶层框架设置大小
-        myFrame.setSize(500, 400);
+        myFrame.setSize(600, 600);
         //使顶层框架可见
         myFrame.setVisible(true);
 //        Commons.executorService.execute(tank);
