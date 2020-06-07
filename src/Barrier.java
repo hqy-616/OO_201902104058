@@ -16,9 +16,6 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
                 );
     }
     public Barrier() {
-
-
-        System.out.println(123);
     }
     public Barrier(int x, int y, int w, int h) {
         this.x = x;
