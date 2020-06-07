@@ -102,4 +102,9 @@ public class BladeSwitch {
             g.drawRect(this.x, this.y, this.w, this.h);
         }
     }
+
+    //测试
+    public static void main(String[] args) {
+
+    }
 }
