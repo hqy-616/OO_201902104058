@@ -112,7 +112,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     //作为CanBeAttack，受到受害者的反击时的行为
     @Override
-    public void counterAttacked(int damage) {
+    public void beCounterAttacked(int damage) {
         //消失
         this.die();
     }
@@ -126,7 +126,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
         //受到攻击，直接消失
         this.die();
         //以一半的伤害反击攻击者
-        offender.counterAttacked(this.damage/2);
+        offender.beCounterAttacked(this.damage/2);
     }
 
     @Override
