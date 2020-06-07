@@ -27,7 +27,7 @@ public class Scoring implements Shape {
     @Override
     public void drawMyself(Graphics g) {
         //画出加积分器当前的状态
-        g.drawString(""+Commons.integral,this.x+8,this.y+17);
+        g.drawString("积分:" + Commons.integral, this.x + 8, this.y + 17);
         //画出自己
         g.drawRect(this.x,this.y,this.w,this.h);
     }
