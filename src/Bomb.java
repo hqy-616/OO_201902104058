@@ -1,3 +1,11 @@
+/**
+ * 功能 ：设计一个定时炸弹。时间到达后，发生爆炸，期体积扩大到4倍（中心不变），攻击它覆盖范围的物体。
+ *
+ * @author 王兆娣 李笑
+ * @author 谷娟娟
+ * @author 胡庆阳
+ * @version 0.1
+ */
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
