@@ -236,9 +236,9 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void fire(){
        if(Commons.isStart==Commons.start) {
            //当CD为0时执行攻击
-           if (this.CD == 0) {
+           if (coolDown) {
                //攻击后CD为1
-               this.CD = 1;
+               this.coolDown = false;
                //shellX,shellY为炮弹左上角坐标
                int shellX = 0;
                int shellY = 0;
@@ -279,11 +279,11 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
            }
        }
     }
-    //减少CD
-    public void reduceCD(){
-        if(this.CD>0){
+    //改变冷却状态
+    public void changeCoolDown(){
+        if(!this.coolDown){
             Helper.sleep(1000);
-            this.CD--;
+            this.coolDown = true;
         }
     }
     @Override
@@ -293,14 +293,15 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击冷却
     @Override
     public void run() {
-        while (true){
-            this.reduceCD();
+        while (Commons.STATUS){
+            Helper.sleep(200);
             //休眠1000毫秒
-            Helper.sleep(1000);
+            this.changeCoolDown();
+            System.out.println(1);
         }
     }
     //获得tank.png文件对应的Image类型对象，初始方向为向左
-    Image img = ImgHelper.getImage("Tank_Left.png");
+    Image img = ImgHelper.getImage("imgs/Tank_Left.png");
     //x,y为左上角坐标
     private int x;
     private int y;
@@ -309,8 +310,8 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     private int w;
     //血量
     private int strength = 200;
-    //攻击冷却时间
-    private int CD;
+    //攻击冷却状态
+    private boolean coolDown = true;
     //油量
     private int oil = 500;
     //炮弹剩余量
