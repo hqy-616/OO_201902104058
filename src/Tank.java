@@ -224,8 +224,8 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //画出自己
     @Override
     public void drawMyself(Graphics g) {
+        //画出Tank信息
         g.drawString("tank "+"油量"+this.oil+"血量"+this.strength+"炮弹剩余:"+this.shellNumber +"个",this.x,this.y-10);
-        //获得tank.png文件对应的Image类型对象
         //画出角色
         g.drawImage(img,this.x,this.y,this.w,this.h,null);
         g.drawRect(this.x,this.y,this.w,this.h);
@@ -234,14 +234,17 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击
     @Override
     public void fire(){
-        System.out.println(this.CD);
+        //当CD为0时执行攻击
         if(this.CD == 0){
+            //攻击后CD为1
             this.CD = 1;
+            //shellX,shellY为炮弹左上角坐标
             int shellX = 0;
             int shellY = 0;
+            //shellW,shellH为炮弹宽和高
             int shellW = 0;
             int shellH = 0;
-            //炮弹初始位置在在侧。炮弹方向取决于当前的方向。
+            //炮弹方向取决于坦克当前的方向。
             switch ( this.currentDirection) {
                 case Movable.RIGHT:
                     shellX = this.x+50;
@@ -270,9 +273,11 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
             }
             Shell shell = new Shell(shellX,shellY,shellW,shellH, this.currentDirection);
             Commons.executorService.execute(shell);
+            //炮弹数量减一
             this.shellNumber--;
         }
     }
+    //减少CD
     public void reduceCD(){
         if(this.CD>0){
             Helper.sleep(1000);
@@ -292,6 +297,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
             Helper.sleep(1000);
         }
     }
+    //获得tank.png文件对应的Image类型对象，初始方向为向左
     Image img = ImgHelper.getImage("Tank_Left.png");
     //x,y为左上角坐标
     private int x;
@@ -301,6 +307,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     private int w;
     //血量
     private int strength = 200;
+    //攻击冷却时间
     private int CD;
     //油量
     private int oil = 200;
