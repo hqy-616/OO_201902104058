@@ -102,6 +102,12 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
     public void run() {
         Helper.delay(5000);
         Commons.drawingPanel.repaint();
+        for(int i = 0;i < 6;i++){
+            this.w *= 1.2;
+            this.h *= 1.2;
+            Helper.delay(100);
+            Commons.drawingPanel.repaint();
+        }
         //炮弹10秒后消失
         this.detectShellOverlap();
         this.die();
