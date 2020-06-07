@@ -24,6 +24,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         this.h = h;
     }
 
+
     //返回中心点横坐标
     @Override
     public int getCx() {
