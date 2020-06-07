@@ -64,6 +64,11 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     private void die(){
         //从自己存在的集合中删除自己
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
+        Commons.integral+=5;
+        //积分大于10游戏终止
+        if(Commons.integral>=10){
+            Commons.gameOver.victory();
+        }
     }
     //画出自己
     @Override
