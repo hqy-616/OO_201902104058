@@ -16,7 +16,6 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
                 );
     }
     public Barrier() {
-
     }
     public Barrier(int x, int y, int w, int h) {
         this.x = x;
@@ -59,7 +58,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
             this.die();
         }else{
             //否则给攻击者造成自身生命值1/2的伤害
-            offender.counterAttacked(this.strength/2);
+            offender.beCounterAttacked(this.strength/2);
         }
     }
     private void die(){
