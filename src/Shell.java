@@ -31,7 +31,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveRight() {
-        img = ImgHelper.getImage("imgs/Shell_Right.png");
+        img = ImgHelper.getImage("资源/Shell_Right.png");
         //右移
         this.x += 10;
         //检测重叠
@@ -40,7 +40,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveLeft() {
-        img = ImgHelper.getImage("imgs/Shell_Left.png");
+        img = ImgHelper.getImage("资源/Shell_Left.png");
         //左移
         this.x -= 10;
         //检测重叠
@@ -49,7 +49,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveUp() {
-        img = ImgHelper.getImage("imgs/Shell_Up.png");
+        img = ImgHelper.getImage("资源/Shell_Up.png");
         //上移
         this.y -= 10;
         //检测重叠
@@ -58,7 +58,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
 
     @Override
     public void moveDown() {
-        img = ImgHelper.getImage("imgs/Shell_Down.png");
+        img = ImgHelper.getImage("资源/Shell_Down.png");
         //下移
         this.y += 10;
         //检测重叠
