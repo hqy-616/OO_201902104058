@@ -1,10 +1,7 @@
 /**
- * 功能 ：
+ * 功能 ：30秒内随机产生10个障碍和急救包
  *
- * @author 这里写初始开发者
- * @author 这里写修改者
- * @author 这里写修改者
- * @author 这里写修改者
+ * @author 胡庆阳
  * @version 0.1
  */
 public class FirstAidFactory implements Runnable{
