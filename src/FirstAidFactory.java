@@ -1,7 +1,17 @@
+/**
+ * 功能 ：
+ *
+ * @author 这里写初始开发者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @version 0.1
+ */
 public class FirstAidFactory implements Runnable{
     private int x;
     private int y;
     private int number = 0;
+
     @Override
     public void run() {
         //当游戏开始是执行
@@ -21,6 +31,7 @@ public class FirstAidFactory implements Runnable{
             }
         }
     }
+
     public static void main(String[] args) {
         Tank tank = new Tank(400,30,50,50,30);
         FirstAid firstAid = new FirstAid(150,30,50,50);
