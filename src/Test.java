@@ -17,7 +17,7 @@ public class Test {
         //可被攻击的集合
         Set<CanBeAttacked> canBeAttackedSets = new CopyOnWriteArraySet<>();
         Commons.canBeAttackedSet =  canBeAttackedSets;
-        Tank tank = new Tank(400,30,80,80,30);
+        Tank tank = new Tank(400,30,50,50,30);
         FirstAid firstAid = new FirstAid(150,30,50,50);
         Barrier barrier1 = new Barrier(50,50,50,50);
         Barrier barrier2 = new Barrier(50,175,50,50);
@@ -36,5 +36,6 @@ public class Test {
 //        Commons.executorService.execute(tank);
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
+        Commons.executorService.execute(tank);
     }
 }
