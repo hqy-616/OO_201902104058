@@ -38,6 +38,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
         this.checkOverlap();
     }
 
+
     @Override
     public void moveLeft() {
         img = ImgHelper.getImage("imgs/Shell_Left.png");

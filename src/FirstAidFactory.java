@@ -1,7 +1,15 @@
+/**
+ * 功能 ：
+ *
+ * @author 这里写初始开发者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @author 这里写修改者
+ * @version 0.1
+ */
 public class FirstAidFactory implements Runnable{
-    private int x;
-    private int y;
     private int number = 0;
+
     @Override
     public void run() {
         //当游戏开始是执行
@@ -9,9 +17,9 @@ public class FirstAidFactory implements Runnable{
             //当时间大于30且生产的数量少于10个时，在2-3秒内随机生产一个急救包
             if(DownCounter.time>30&&this.number<10){
                 //产生急救包的随机范围
-                x = (int) (Math.random() * 900 + 300);
-                y = (int) (Math.random() * 200 + 200);
-                Commons.executorService.execute(new FirstAid(this.x, this.y, 50, 50));
+                int x = (int) (Math.random() * 900 + 300);
+                int y = (int) (Math.random() * 200 + 200);
+                Commons.executorService.execute(new FirstAid(x, y, 50, 50));
                 //数量+1
                 this.number++;
                 //刷新面板
@@ -21,6 +29,7 @@ public class FirstAidFactory implements Runnable{
             }
         }
     }
+
     public static void main(String[] args) {
         Tank tank = new Tank(400,30,50,50,30);
         FirstAid firstAid = new FirstAid(150,30,50,50);
