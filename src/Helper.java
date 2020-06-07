@@ -7,7 +7,7 @@ public class Helper {
      * @param high 上限
      */
     public static void sleep(int low, int high) {
-        int millSeconds = (int)(Math.random() * (high - low));
+        int millSeconds = (int)(Math.random() * (high - low)+low);
         Helper.sleep(millSeconds);
     }
 
