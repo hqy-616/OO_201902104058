@@ -55,9 +55,6 @@ public class FirstAid implements Shape, CanProvideStrength, OverlapSensitive,Run
         //加血后消失
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
         //积分大于10终止游戏
-        if(Commons.integral>=10){
-            Commons.gameOver.victory();
-        }
         return 0.01*this.w*this.h;
     }
 

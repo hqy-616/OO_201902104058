@@ -313,7 +313,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击冷却状态
     private boolean coolDown = true;
     //油量
-    private int oil = 500;
+    private int oil = 5000;
     //炮弹剩余量
     private int shellNumber;
     //最后一次移动的方向

@@ -33,6 +33,7 @@ public class FirstAidFactory implements Runnable{
         new Barrier(50,50,50,50);
         new Barrier(50,175,50,50);
         new Scoring(50,5,30,30);
+        new DashBoard(510,5,30,74);
         DownCounter timer = new DownCounter(5,5,30,30);
         FirstAidFactory firstAidFactory = new FirstAidFactory();
         BarrierFactory barrierFactory = new BarrierFactory();

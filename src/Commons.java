@@ -19,12 +19,17 @@ public class Commons {
     public static Set<Shape> shapeSet = new CopyOnWriteArraySet<Shape>();
     //游戏终止器
     public static GameOver gameOver=new GameOver();
+    //路障存活数量
+    public static int survive=0;
     //积分
     public static int integral=0;
     //开始标志
     public static final int start=0;
+    //结束标志
     public static final int end=1;
+    //胜利标志
     public static final int success=2;
+    //失败标志
     public static final int loser=3;
     public static int isStart;
     public static int isSuccess;
