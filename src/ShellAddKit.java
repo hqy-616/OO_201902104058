@@ -1,14 +1,13 @@
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collection;
 /**
- * 功能 ：炸药包
+ * 功能 ：炮弹包为接收炮弹者提供炮弹
  *
  * @author 胡庆阳 谷娟娟
  * @version 0.1
  */
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collection;
-
-public class AmmunitionBag implements Shape, CanProvideAmmunition, OverlapSensitive{
+public class ShellAddKit implements Shape,OverlapSensitive,Runnable,CanProvideAmmunition {
     {
         this.collectionsWhereIAm = new ArrayList<>();
         /*
@@ -24,14 +23,32 @@ public class AmmunitionBag implements Shape, CanProvideAmmunition, OverlapSensit
                 Commons.overlapSensitiveSet
         );
     }
-    public AmmunitionBag() {
+    public ShellAddKit() {
     }
 
-    public AmmunitionBag(int x, int y, int w, int h){
+    public ShellAddKit(int x, int y, int w, int h){
         this.x = x;
         this.y= y;
         this.w= w;
         this.h = h;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 20; i++) {
+            //下降
+            this.y += 5;
+            //刷新面板
+            Commons.drawingPanel.repaint();
+            try {
+                //睡眠200ms
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        //从自己存在的集合中删除自己
+        Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
     }
     //返回中心点横坐标
     @Override
@@ -57,7 +74,7 @@ public class AmmunitionBag implements Shape, CanProvideAmmunition, OverlapSensit
 
     //返回增加的炮弹数量
     @Override
-    public int provideAmmunition() {
+    public int provideShell() {
         //消失
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
         return 5;
@@ -81,4 +98,5 @@ public class AmmunitionBag implements Shape, CanProvideAmmunition, OverlapSensit
     private int w;
     //自身存在与哪些集合中
     private Collection<Collection> collectionsWhereIAm;
+
 }

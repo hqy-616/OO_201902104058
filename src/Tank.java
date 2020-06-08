@@ -128,7 +128,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
                 }
                 //判断重叠的对象是否在provideAmmunitionSet集合里
                 if(Commons.provideAmmunitionSet.contains(overlapSensitive)){
-                    this.receiveAmmunition((AmmunitionBag)overlapSensitive);
+                    this.receiveShell((CanProvideAmmunition) overlapSensitive);
                 }
             }
         }
@@ -141,8 +141,8 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     }
 
     @Override
-    public void receiveAmmunition(CanProvideAmmunition object) {
-        this.shellNumber += object.provideAmmunition();
+    public void receiveShell(CanProvideAmmunition object) {
+        this.shellNumber += object.provideShell();
     }
 
     /**
