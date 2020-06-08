@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable{
+public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable,CanReceiveAmmunition{
     {
 
         this.collectionsWhereIAm = new ArrayList<>();
@@ -126,6 +126,10 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
                 if(Commons.canBeAttackedSet.contains(overlapSensitive)){
                     ((CanBeAttacked)overlapSensitive).attacked(this);
                 }
+                //判断重叠的对象是否在provideAmmunitionSet集合里
+                if(Commons.provideAmmunitionSet.contains(overlapSensitive)){
+                    this.receiveShell((CanProvideAmmunition) overlapSensitive);
+                }
             }
         }
     }
@@ -134,6 +138,11 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void receiveStrength(CanProvideStrength object){
         this.strength += object.transferStrength();
+    }
+
+    @Override
+    public void receiveShell(CanProvideAmmunition object) {
+        this.shellNumber += object.provideShell();
     }
 
     /**
@@ -297,7 +306,6 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
             Helper.sleep(200);
             //休眠1000毫秒
             this.changeCoolDown();
-            System.out.println(1);
         }
     }
     //获得tank.png文件对应的Image类型对象，初始方向为向左
@@ -313,7 +321,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //攻击冷却状态
     private boolean coolDown = true;
     //油量
-    private int oil = 500;
+    private int oil = 5000;
     //炮弹剩余量
     private int shellNumber;
     //最后一次移动的方向

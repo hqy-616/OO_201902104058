@@ -14,6 +14,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         Helper.addObjectToCollectionCollection(this.collectionsWhereIAm,this,
                 Commons.canBeAttackedSet, Commons.shapeSet, Commons.overlapSensitiveSet
                 );
+        Commons.survive+=1;
     }
     public Barrier() {
     }
@@ -53,21 +54,19 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     @Override
     public void attacked(CanAttack offender) {
         //减少生命值
+        offender.beCounterAttacked(this.strength/2);
         this.strength -= offender.getDamage();
         //当生命值小于等于0时消失
-        if (this.strength <= 0) {
+        if (this.strength <= 0){
             this.die();
-        }else{
-            //否则给攻击者造成自身生命值1/2的伤害
-            offender.beCounterAttacked(this.strength/2);
         }
     }
     private void die(){
         //从自己存在的集合中删除自己
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
         Commons.integral+=5;
-        //积分大于10游戏终止
-        if(Commons.integral>=10){
+        Commons.survive-=1;
+        if (Commons.survive<=0){
             Commons.gameOver.victory();
         }
     }

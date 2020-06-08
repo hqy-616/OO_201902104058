@@ -1,9 +1,10 @@
 /**
- * 功能 ：30秒内随机产生10个障碍和急救包
+ * 功能 ：30秒内随机产生10个急救包
  *
- * @author 胡庆阳
+ * @author 胡庆阳 谷娟娟
  * @version 0.1
  */
+
 public class FirstAidFactory implements Runnable{
     private int number = 0;
 
@@ -33,6 +34,7 @@ public class FirstAidFactory implements Runnable{
         new Barrier(50,50,50,50);
         new Barrier(50,175,50,50);
         new Scoring(50,5,30,30);
+        new DashBoard(510,5,30,74);
         DownCounter timer = new DownCounter(5,5,30,30);
         FirstAidFactory firstAidFactory = new FirstAidFactory();
         BarrierFactory barrierFactory = new BarrierFactory();

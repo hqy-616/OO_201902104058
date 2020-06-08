@@ -1,3 +1,9 @@
+/**
+ * 功能 ：30秒内随机产生10个路障
+ *
+ * @author 胡庆阳 谷娟娟
+ * @version 0.1
+ */
 public class BarrierFactory implements Runnable{
     private int x;
     private int y;
