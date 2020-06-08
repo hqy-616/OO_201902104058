@@ -1,12 +1,12 @@
 public class Test {
     public static void main(String[] args) {
-        Tank tank = new Tank(400,30,50,50,30);
-        FirstAid firstAid = new FirstAid(150,30,50,50);
+        Tank tank = new Tank(500, 30, 50, 50, 30);
+        FirstAid firstAid = new FirstAid(150, 30, 50, 50);
         new Barrier(50,50,50,50);
-        new Barrier(50,175,50,50);
-        new Scoring(50,5,30,60);
-        new DashBoard(510,5,30,74);
-        DownCounter timer = new DownCounter(5,5,30,30);
+        new Barrier(50, 175, 50, 50);
+        new Scoring(150, 5, 30, 60);
+        new DashBoard(510, 5, 30, 74);
+        DownCounter timer = new DownCounter(5, 5, 30, 100);
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
         new BladeSwitch(400,70,70,50);
