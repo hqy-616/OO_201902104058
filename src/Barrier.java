@@ -54,13 +54,11 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     @Override
     public void attacked(CanAttack offender) {
         //减少生命值
+        offender.beCounterAttacked(this.strength/2);
         this.strength -= offender.getDamage();
         //当生命值小于等于0时消失
-        if (this.strength <= 0) {
+        if (this.strength <= 0){
             this.die();
-        }else{
-            //否则给攻击者造成自身生命值1/2的伤害
-            offender.beCounterAttacked(this.strength/2);
         }
     }
     private void die(){

@@ -12,7 +12,7 @@ public class AmmunitionBag implements Shape, CanProvideAmmunition, OverlapSensit
     {
         this.collectionsWhereIAm = new ArrayList<>();
         /*
-            调用addObjectToCollectionCollection将自己分别加入canTransferStrengthSet，shapeSet，overlapSensitiveSet，
+            调用addObjectToCollectionCollection将自己分别加入provideAmmunitionSet，shapeSet，overlapSensitiveSet，
             以便能被 Commons.drawingPanelForSet通知画出，可以被检查重叠，可以加炮弹，
             并且将自己所在的集合都加入到collectionCollection这个集合中
         */
