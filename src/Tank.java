@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable{
+public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable,CanReceiveAmmunition{
     {
 
         this.collectionsWhereIAm = new ArrayList<>();
@@ -126,6 +126,10 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
                 if(Commons.canBeAttackedSet.contains(overlapSensitive)){
                     ((CanBeAttacked)overlapSensitive).attacked(this);
                 }
+                //判断重叠的对象是否在provideAmmunitionSet集合里
+                if(Commons.provideAmmunitionSet.contains(overlapSensitive)){
+                    this.receiveAmmunition((AmmunitionBag)overlapSensitive);
+                }
             }
         }
     }
@@ -134,6 +138,11 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     @Override
     public void receiveStrength(CanProvideStrength object){
         this.strength += object.transferStrength();
+    }
+
+    @Override
+    public void receiveAmmunition(CanProvideAmmunition object) {
+        this.shellNumber += object.provideAmmunition();
     }
 
     /**
