@@ -297,7 +297,6 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
             Helper.sleep(200);
             //休眠1000毫秒
             this.changeCoolDown();
-            System.out.println(1);
         }
     }
     //获得tank.png文件对应的Image类型对象，初始方向为向左
