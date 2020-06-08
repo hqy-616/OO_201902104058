@@ -4,6 +4,7 @@
  * @author 胡庆阳 谷娟娟
  * @version 0.1
  */
+
 public class FirstAidFactory implements Runnable{
     private int number = 0;
 
