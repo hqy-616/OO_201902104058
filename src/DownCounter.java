@@ -35,7 +35,7 @@ public class DownCounter implements Shape,Runnable{
     @Override
     public void drawMyself(Graphics g) {
         //画出加油包当前的状态
-        g.drawString(""+DownCounter.time,this.x+8,this.y+17);
+        g.drawString("时间剩余:" + DownCounter.time, this.x + 8, this.y + 17);
         //画出自己
        g.drawRect(this.x,this.y,this.w,this.h);
     }
