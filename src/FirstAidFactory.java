@@ -1,10 +1,7 @@
 /**
- * 功能 ：30s内随机时间 产生十个急救包
+ * 功能 ：30秒内随机产生10个障碍和急救包
  *
- * @author  胡庆洋 谷娟娟
- * @author  谷娟娟
- * @author  胡庆洋
- * @author  胡庆洋
+ * @author 胡庆阳
  * @version 0.1
  */
 public class FirstAidFactory implements Runnable{

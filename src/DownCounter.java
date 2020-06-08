@@ -63,7 +63,7 @@ public class DownCounter implements Shape,Runnable{
                 }
             }
     }
-    public static int time =4;
+    public static int time = 60;
     //x,y为左上角坐标
     private int x;
     private int y;

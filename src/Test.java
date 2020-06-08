@@ -8,6 +8,7 @@ public class Test {
         DownCounter timer = new DownCounter(5,5,30,30);
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
+        new BladeSwitch(400,70,70,50);
         //创建画图面板对象，并关联shapeSet数组
         DrawingPanel drawingPanel = new DrawingPanel(Commons.shapeSet);
         Commons.drawingPanel = drawingPanel;
@@ -20,5 +21,6 @@ public class Test {
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
         Commons.executorService.execute(tank);
+
     }
 }
