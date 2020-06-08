@@ -18,7 +18,7 @@ public class ShellAddKit implements Shape,OverlapSensitive,Runnable,CanProvideAm
         Helper.addObjectToCollectionCollection(
                 this.collectionsWhereIAm,
                 this,
-                Commons.canProvideAmmunitions,
+                Commons.provideAmmunitionSet,
                 Commons.shapeSet,
                 Commons.overlapSensitiveSet
         );

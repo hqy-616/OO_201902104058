@@ -19,6 +19,8 @@ public class Commons {
     public static Set<Shape> shapeSet = new CopyOnWriteArraySet<Shape>();
     //可以增加炮弹数量的集合
     public static Set<CanProvideAmmunition> provideAmmunitionSet = new CopyOnWriteArraySet<>();
+    //可以增加炮弹数量的集合
+    public static Set<CanReceiveAmmunition> receiveAmmunitions = new CopyOnWriteArraySet<>();
     //游戏终止器
     public static GameOver gameOver=new GameOver();
     //路障存活数量

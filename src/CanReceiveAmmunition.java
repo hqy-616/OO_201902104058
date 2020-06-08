@@ -1,3 +1,3 @@
 public interface CanReceiveAmmunition {
-    void receiveAmmunition(CanProvideAmmunition object);
+    void receiveShell(CanProvideAmmunition object);
 }
