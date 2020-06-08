@@ -21,9 +21,9 @@ public class BladeSwitch {
         this.w = w;
         this.h = h;
         //上刀刃的左上角坐标和bladeSwitch相同，w也相同，但高度为一半
-        Blade upBlade = new Blade(Movable.UP, this.x, this.y, this.w, this.h / 2,"OO_1/imgs/Blade_Up.png");
+        Blade upBlade = new Blade(Movable.UP, this.x, this.y, this.w, this.h / 2,"imgs/Blade_Up.png");
         //下刀刃的左上角坐标x，y坐标为bladeSwitch竖向中点，w相同，高度为一半
-        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h / 2, this.w, this.h / 2,"OO_1/imgs/Blade_Down.png");
+        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h / 2, this.w, this.h / 2,"imgs/Blade_Down.png");
         Commons.executorService.execute(upBlade);
         Commons.executorService.execute(downBlade);
     }
@@ -73,7 +73,7 @@ public class BladeSwitch {
             //相背运动缩小，相对运动增大
             //如果是下刀片，则先向下移再向上移
             if (this.attackDirection == Movable.DOWN) {
-                while (true) {
+                while (Commons.STATUS) {
                     for (int i = 0 ; i < 5 ; i++){
                         //下刀片下移
                         this.y +=10;
@@ -82,6 +82,7 @@ public class BladeSwitch {
                         this.w -= 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                     for (int i = 0 ; i < 5 ; i++){
                         //下刀片上移
@@ -91,12 +92,13 @@ public class BladeSwitch {
                         this.w += 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                 }
             }
             //如果是上刀片，则先向上移再向下移
             if (this.attackDirection == Movable.UP) {
-                while (true) {
+                while (Commons.STATUS) {
                     for (int i = 0 ; i < 5 ; i++){
                         //上刀片上移
                         this.y -= 10;
@@ -105,6 +107,7 @@ public class BladeSwitch {
                         this.w -= 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                     for (int i = 0 ; i < 5 ; i++){
                         //上刀片下移
@@ -114,6 +117,7 @@ public class BladeSwitch {
                         this.w += 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                 }
             }
@@ -156,7 +160,6 @@ public class BladeSwitch {
         public void drawMyself(Graphics g) {
             g.drawRect(this.x, this.y, this.w, this.h);
             g.drawImage(ImgHelper.getImage(this.name),this.x,this.y,this.w,this.h,null);
-            Commons.drawingPanel.repaint();
         }
         //检测重叠
         private void checkOverlap(){
