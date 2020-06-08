@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Tank implements Shape, Movable,CanReceiveAmmunition, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable{
+public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeAttacked,CanReceiveStrength,Controllable,Runnable,CanReceiveAmmunition{
     {
 
         this.collectionsWhereIAm = new ArrayList<>();
@@ -126,9 +126,9 @@ public class Tank implements Shape, Movable,CanReceiveAmmunition, OverlapSensiti
                 if(Commons.canBeAttackedSet.contains(overlapSensitive)){
                     ((CanBeAttacked)overlapSensitive).attacked(this);
                 }
-                //判断重叠对象是否在canProvideAmmunitions集合里
-                if(Commons.canProvideAmmunitions.contains(overlapSensitive)){
-                   this.receiveShell((CanProvideAmmunition)overlapSensitive);
+                //判断重叠的对象是否在provideAmmunitionSet集合里
+                if(Commons.provideAmmunitionSet.contains(overlapSensitive)){
+                    this.receiveAmmunition((AmmunitionBag)overlapSensitive);
                 }
             }
         }
@@ -139,13 +139,10 @@ public class Tank implements Shape, Movable,CanReceiveAmmunition, OverlapSensiti
     public void receiveStrength(CanProvideStrength object){
         this.strength += object.transferStrength();
     }
-    /**
-     * 作为CanReceiveAmmunition接收子弹的行为
-     * @param object
-     */
+
     @Override
-    public void receiveShell(CanProvideAmmunition object) {
-        this.shellNumber+=object.provideShell();
+    public void receiveAmmunition(CanProvideAmmunition object) {
+        this.shellNumber += object.provideAmmunition();
     }
 
     /**
