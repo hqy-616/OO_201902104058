@@ -42,7 +42,7 @@ public class WallFactory implements Runnable{
             //根据伤害值扣血
             this.strength-=offender.getDamage();
             //做出反击，反击伤害为0
-            offender.beCounterAttacked(0);
+            offender.counterAttacked(0);
             //生命值小于零则死亡
             if (this.strength<=0){
                 this.die();
@@ -117,7 +117,7 @@ public class WallFactory implements Runnable{
         @Override
         public void attacked(CanAttack offender) {
             //做出反击，反击伤害0
-            offender.beCounterAttacked(0);
+            offender.counterAttacked(0);
         }
 
         //获得中心点x
