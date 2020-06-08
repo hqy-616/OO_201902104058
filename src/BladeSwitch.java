@@ -153,13 +153,14 @@ public class BladeSwitch {
         }
 
         @Override
-        public void beCounterAttacked(int damage) {
+        public void counterAttacked(int damage) {
             this.strength -= damage;
         }
+
         @Override
         public void drawMyself(Graphics g) {
             g.drawRect(this.x, this.y, this.w, this.h);
-            g.drawImage(ImgHelper.getImage(this.name),this.x,this.y,this.w,this.h,null);
+            g.drawImage(ImgHelper.getImage(this.name), this.x, this.y, this.w, this.h, null);
         }
         //检测重叠
         private void checkOverlap(){

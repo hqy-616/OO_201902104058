@@ -156,14 +156,13 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
 
     //作为CanBeAttack，受到受害者的反击时的行为
     @Override
-    public void beCounterAttacked(int damage) {
+    public void counterAttacked(int damage) {
         //减少生命值
         this.strength -= damage;
         //检查存活状态
-        if(this.strength<0){
-            Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
-        }
-        else {
+        if (this.strength < 0) {
+            Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm, this);
+        } else {
             this.cancelMove(this.currentDirection);
         }
        /*if (this.checkAlive()){
@@ -208,7 +207,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
         }
         else {
             //以一半的伤害反击攻击者
-            offender.beCounterAttacked(this.damage / 2);
+            offender.counterAttacked(this.damage / 2);
         }
        /* if (this.checkAlive()) {
             //以一半的伤害反击攻击者
@@ -325,7 +324,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //炮弹剩余量
     private int shellNumber;
     //最后一次移动的方向
-    private int currentDirection = Movable.RIGHT;
+    private int currentDirection = Movable.LEFT;
     //攻击时，对对方的伤害
     private int damage = 10;
     //自身存在与哪些集合中

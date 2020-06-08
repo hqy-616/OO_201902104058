@@ -37,14 +37,15 @@ public class Scoring implements Shape {
         //画出加积分器当前的状态
         g.drawString("积分:" + Commons.integral, this.x + 8, this.y + 17);
         //画出自己
-        g.drawRect(this.x,this.y,this.w,this.h);
+        g.drawRect(this.x, this.y, this.w, this.h);
     }
+
     //x,y为左上角坐标
     private int x;
     private int y;
     //w，h为宽度和高度
-    private int h;
-    private int w;
+    private int h = 10;
+    private int w = 20;
     //自身存在与哪些集合中
     private Collection<Collection> collectionCollection;
 }
