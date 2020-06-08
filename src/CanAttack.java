@@ -9,5 +9,5 @@ public interface CanAttack {
     // 一般情况下，受到反击，说明受害者仍然存存活，应让攻击者返回移动之前的位置。
     //void beCounterAttacked(int damage);
     //受到反击
-    void counterAttacked(int counterAttackDamageFromVictim);
+    void counterActed(int counterAttackDamageFromVictim);
 }
