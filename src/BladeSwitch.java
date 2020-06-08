@@ -2,7 +2,6 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * 描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
@@ -22,9 +21,9 @@ public class BladeSwitch {
         this.w = w;
         this.h = h;
         //上刀刃的左上角坐标和bladeSwitch相同，w也相同，但高度为一半
-        Blade upBlade = new Blade(Movable.UP, this.x, this.y, this.w, this.h / 2,"imgs/Blade_Up.png");
+        Blade upBlade = new Blade(Movable.UP, this.x, this.y, this.w, this.h / 2,"OO_1/imgs/Blade_Up.png");
         //下刀刃的左上角坐标x，y坐标为bladeSwitch竖向中点，w相同，高度为一半
-        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h / 2, this.w, this.h / 2,"imgs/Blade_Down.png");
+        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h / 2, this.w, this.h / 2,"OO_1/imgs/Blade_Down.png");
         Commons.executorService.execute(upBlade);
         Commons.executorService.execute(downBlade);
     }
