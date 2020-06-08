@@ -325,7 +325,7 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     //炮弹剩余量
     private int shellNumber;
     //最后一次移动的方向
-    private int currentDirection = Movable.RIGHT;
+    private int currentDirection = Movable.LEFT;
     //攻击时，对对方的伤害
     private int damage = 10;
     //自身存在与哪些集合中
