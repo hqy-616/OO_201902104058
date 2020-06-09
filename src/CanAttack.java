@@ -4,9 +4,10 @@ public interface CanAttack {
     //    void attack(CanBeAttacked victim);
     //受害者要获得攻击者的伤害值
     int getDamage();
+
     //受害者让攻击者受到反击。
     // 一般情况下，受到反击，说明受害者仍然存存活，应让攻击者返回移动之前的位置。
     //void beCounterAttacked(int damage);
     //受到反击
-    void beCounterAttacked(int counterAttackDamageFromVictim);
+    void counterActed(int counterAttackDamageFromVictim);
 }

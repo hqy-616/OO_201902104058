@@ -2,12 +2,11 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * 描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
  */
-public class BladeSwitch{
+public class BladeSwitch {
 
     //x,y为左上角坐标
     private int x;
@@ -74,7 +73,7 @@ public class BladeSwitch{
             //相背运动缩小，相对运动增大
             //如果是下刀片，则先向下移再向上移
             if (this.attackDirection == Movable.DOWN) {
-                while (true) {
+                while (Commons.STATUS) {
                     for (int i = 0 ; i < 5 ; i++){
                         //下刀片下移
                         this.y +=10;
@@ -83,6 +82,7 @@ public class BladeSwitch{
                         this.w -= 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                     for (int i = 0 ; i < 5 ; i++){
                         //下刀片上移
@@ -92,12 +92,13 @@ public class BladeSwitch{
                         this.w += 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                 }
             }
             //如果是上刀片，则先向上移再向下移
             if (this.attackDirection == Movable.UP) {
-                while (true) {
+                while (Commons.STATUS) {
                     for (int i = 0 ; i < 5 ; i++){
                         //上刀片上移
                         this.y -= 10;
@@ -106,6 +107,7 @@ public class BladeSwitch{
                         this.w -= 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                     for (int i = 0 ; i < 5 ; i++){
                         //上刀片下移
@@ -115,6 +117,7 @@ public class BladeSwitch{
                         this.w += 5;
                         this.checkOverlap();
                         Helper.delay(100);
+                        Commons.drawingPanel.repaint();
                     }
                 }
             }
@@ -150,16 +153,14 @@ public class BladeSwitch{
         }
 
         @Override
-        public void beCounterAttacked(int counterAttackDamageFromVictim) {
-            this.strength -= counterAttackDamageFromVictim;
-            Helper.removeObjectFormCollectionCollection(this.collectionCollection,this);
+        public void counterActed(int damage) {
+            this.strength -= damage;
         }
 
-
+        @Override
         public void drawMyself(Graphics g) {
             g.drawRect(this.x, this.y, this.w, this.h);
-            g.drawImage(ImgHelper.getImage(this.name),this.x,this.y,this.w,this.h,null);
-            Commons.drawingPanel.repaint();
+            g.drawImage(ImgHelper.getImage(this.name), this.x, this.y, this.w, this.h, null);
         }
         //检测重叠
         private void checkOverlap(){

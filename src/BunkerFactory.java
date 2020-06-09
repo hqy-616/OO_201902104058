@@ -1,32 +1,29 @@
 /**
- * 功能 ：30秒内随机产生10个急救包
+ * 功能 ：随机位置产生10个碉堡，它们随机时间向随机方向发射Shell对象。这些Shell不能攻击碉堡。
  *
- * @author 胡庆阳 谷娟娟
+ * @author 李笑 王兆娣
  * @version 0.1
  */
-
-public class FirstAidFactory implements Runnable{
-    private int number = 0;
-
+public class BunkerFactory implements Runnable {
     @Override
     public void run() {
-        //当游戏开始是执行
+        //当游戏开始时执行
         while (Commons.STATUS) {
-            //当时间大于30且生产的数量少于10个时，在2-3秒内随机生产一个急救包
-            if(DownCounter.time>30&&this.number<10){
-                //产生急救包的随机范围
-                int x = (int) (Math.random() * 900 + 100);
-                int y = (int) (Math.random() * 200 + 150);
-                Commons.executorService.execute(new FirstAid(x, y, 50, 50));
+            if(this.number < 10){
+                //产生堡垒的随机范围
+                int x = (int) (Math.random() * 800 + 400);
+                int y = (int) (Math.random() * 200 + 200);
+                Bunker bunker = new Bunker(x,y,30,50);
+                Commons.executorService.execute(bunker);
                 //数量+1
                 this.number++;
                 //刷新面板
                 Commons.drawingPanel.repaint();
-                //睡眠2-3秒
-                Helper.sleep(2000, 3000);
             }
         }
     }
+
+    private int number = 0;
 
     public static void main(String[] args) {
         Tank tank = new Tank(400,30,50,50,30);
@@ -36,8 +33,7 @@ public class FirstAidFactory implements Runnable{
         new Scoring(50,5,30,30);
         new DashBoard(510,5,30,74);
         DownCounter timer = new DownCounter(5,5,30,30);
-        FirstAidFactory firstAidFactory = new FirstAidFactory();
-        BarrierFactory barrierFactory = new BarrierFactory();
+        BunkerFactory bunkerFactory = new BunkerFactory();
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
         //创建画图面板对象，并关联shapeSet数组
@@ -52,7 +48,6 @@ public class FirstAidFactory implements Runnable{
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
         Commons.executorService.execute(tank);
-        Commons.executorService.execute(firstAidFactory);
-        Commons.executorService.execute(barrierFactory);
+        Commons.executorService.execute(bunkerFactory);
     }
 }
