@@ -12,8 +12,8 @@ public class WallFactory implements Runnable{
     @Override
     public void run() {
         for (int i = 0 ; i <= 4 ; i++){
-            new BlackWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 100, 20);
-            new GreenWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 20, 100, 50);
+            new BlackWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 50, 50);
+            new GreenWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 50, 50, 50);
         }
     }
     //绿墙
