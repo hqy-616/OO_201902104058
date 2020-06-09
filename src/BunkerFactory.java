@@ -8,7 +8,7 @@ public class BunkerFactory implements Runnable {
     @Override
     public void run() {
         //当游戏开始时执行
-        while (Commons.STATUS) {
+        while (Commons.STATUS&&Commons.isStart==Commons.start) {
             if(this.number < 10){
                 //产生堡垒的随机范围
                 int x = (int) (Math.random() * 800 + 400);

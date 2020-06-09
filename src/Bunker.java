@@ -14,14 +14,13 @@ public class Bunker implements Shape,Runnable{
 
     @Override
     public void run() {
-        while(Commons.STATUS&& DownCounter.time > 1 ) {
+        while(Commons.STATUS&&Commons.isStart==Commons.start) {
             Helper.sleep(2000, 3000);
             Commons.executorService.execute(new Shell(
                     this.x,this.y,20,20,(int)(Math.random()*4)));
             Helper.sleep(4000, 6000);
         }
     }
-
 
     //画出自己
     @Override
