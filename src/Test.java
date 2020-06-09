@@ -30,6 +30,6 @@ public class Test {
         Commons.executorService.execute(barrierFactory);
         Commons.executorService.execute(shellAddKitFactory);
         Commons.executorService.execute(new WallFactory());
-
+        Commons.executorService.execute(new BunkerFactory());
     }
 }
