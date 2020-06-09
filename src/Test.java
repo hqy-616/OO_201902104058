@@ -7,7 +7,6 @@ public class Test {
         new Scoring(150, 5, 30, 60);
         new DashBoard(510, 5, 30, 74);
         new Bomb(80, 130, 50, 50, 20);
-        Commons.executorService.execute(new BunkerFactory());
         DownCounter timer = new DownCounter(5, 5, 30, 100);
         FirstAidFactory firstAidFactory = new FirstAidFactory();
         BarrierFactory barrierFactory = new BarrierFactory();
