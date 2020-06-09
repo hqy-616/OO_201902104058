@@ -6,6 +6,7 @@ public class Test {
         new Barrier(50, 175, 50, 50);
         new Scoring(150, 5, 30, 60);
         new DashBoard(510, 5, 30, 74);
+        new Bomb(80, 130, 50, 50, 20);
         DownCounter timer = new DownCounter(5, 5, 30, 100);
         FirstAidFactory firstAidFactory = new FirstAidFactory();
         BarrierFactory barrierFactory = new BarrierFactory();
