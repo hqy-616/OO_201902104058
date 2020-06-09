@@ -1,8 +1,8 @@
 public class Test {
     public static void main(String[] args) {
-        Tank tank = new Tank(500, 30, 50, 50, 30);
+        Tank tank = new Tank(5, 70, 50, 50, 30);
         FirstAid firstAid = new FirstAid(150, 30, 50, 50);
-        new Barrier(50,50,50,50);
+        new Barrier(100,100,50,50);
         new Barrier(50, 175, 50, 50);
         new Scoring(150, 5, 30, 60);
         new DashBoard(510, 5, 30, 74);
@@ -30,6 +30,6 @@ public class Test {
         Commons.executorService.execute(barrierFactory);
         Commons.executorService.execute(shellAddKitFactory);
         Commons.executorService.execute(new WallFactory());
-
+        Commons.executorService.execute(new BunkerFactory());
     }
 }

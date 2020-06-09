@@ -15,8 +15,8 @@ public class FirstAidFactory implements Runnable{
             //当时间大于30且生产的数量少于10个时，在2-3秒内随机生产一个急救包
             if(DownCounter.time>30&&this.number<10){
                 //产生急救包的随机范围
-                int x = (int) (Math.random() * 900 + 300);
-                int y = (int) (Math.random() * 200 + 200);
+                int x = (int) (Math.random() * 900 + 100);
+                int y = (int) (Math.random() * 200 + 150);
                 Commons.executorService.execute(new FirstAid(x, y, 50, 50));
                 //数量+1
                 this.number++;
