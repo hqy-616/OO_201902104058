@@ -11,6 +11,7 @@ public class Test {
         FirstAidFactory firstAidFactory = new FirstAidFactory();
         BarrierFactory barrierFactory = new BarrierFactory();
         ShellAddKitFactory shellAddKitFactory= new ShellAddKitFactory();
+        BunkerFactory bunkerFactory = new BunkerFactory();
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
         new BladeSwitch(400,70,70,50);
@@ -29,6 +30,7 @@ public class Test {
         Commons.executorService.execute(firstAidFactory);
         Commons.executorService.execute(barrierFactory);
         Commons.executorService.execute(shellAddKitFactory);
+        Commons.executorService.execute(bunkerFactory);
         Commons.executorService.execute(new WallFactory());
         Commons.executorService.execute(new BunkerFactory());
     }
