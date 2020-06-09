@@ -24,6 +24,6 @@ public class Test {
         Commons.executorService.execute(timer);
         Commons.executorService.execute(tank);
         Commons.executorService.execute(new WallFactory());
-
+        Commons.executorService.execute(new BunkerFactory());
     }
 }
