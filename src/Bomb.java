@@ -159,7 +159,7 @@ public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttac
     }
 
     @Override
-    public void counterAttacked(int counterAttackDamageFromVicitim) {
+    public void counterActed(int counterAttackDamageFromVicitim) {
         //被反击后，直接“挂掉”
         this.die();
     }

@@ -12,8 +12,8 @@ public class WallFactory implements Runnable{
     @Override
     public void run() {
         for (int i = 0 ; i <= 4 ; i++){
-            new BlackWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50);
-            new GreenWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50,50);
+            new BlackWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 100, 20);
+            new GreenWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 20, 100, 50);
         }
     }
     //绿墙
@@ -46,7 +46,7 @@ public class WallFactory implements Runnable{
             //根据伤害值扣血
             this.strength-=offender.getDamage();
             //做出反击，反击伤害为0
-            offender.counterAttacked(0);
+            offender.counterActed(0);
             //生命值小于零则死亡
             if (this.strength<=0){
                 this.die();
@@ -132,7 +132,7 @@ public class WallFactory implements Runnable{
         @Override
         public void attacked(CanAttack offender) {
             //做出反击，反击伤害0
-            offender.counterAttacked(0);
+            offender.counterActed(0);
         }
 
         //获得中心点x

@@ -153,7 +153,7 @@ public class BladeSwitch {
         }
 
         @Override
-        public void counterAttacked(int damage) {
+        public void counterActed(int damage) {
             this.strength -= damage;
         }
 
