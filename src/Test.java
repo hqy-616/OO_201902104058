@@ -22,6 +22,7 @@ public class Test {
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
         Commons.executorService.execute(tank);
+        Commons.executorService.execute(new WallFactory());
 
     }
 }
