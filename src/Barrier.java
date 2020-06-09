@@ -50,7 +50,6 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
                 Commons.canBeAttackedSet, Commons.shapeSet, Commons.overlapSensitiveSet
         );
         Barrier.amount++;
-        Commons.survive += 1;
     }
 
     public static int getAmount() {
@@ -91,7 +90,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     private int strength = 30;
     //自身存在与哪些集合中
     private Collection<Collection> collectionsWhereIAm;
-
+    //存活
     private void die() {
         //从自己存在的集合中删除自己
         Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm, this);
@@ -100,8 +99,7 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         //刷新
         Commons.drawingPanel.repaint();
         Commons.integral += 5;
-        Commons.survive -= 1;
-        if (Commons.survive <= 0) {
+        if ( Barrier.amount <= 0) {
             Commons.gameOver.victory();
         }
     }

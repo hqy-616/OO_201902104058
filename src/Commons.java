@@ -23,8 +23,7 @@ public class Commons {
     public static Set<CanReceiveAmmunition> receiveAmmunitions = new CopyOnWriteArraySet<>();
     //游戏终止器
     public static GameOver gameOver=new GameOver();
-    //路障存活数量
-    public static int survive=0;
+
     //积分
     public static int integral=0;
     //开始标志
