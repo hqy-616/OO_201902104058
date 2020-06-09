@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * 功能 ：随机产生两种类型的墙（各五块）。黑墙：阻挡任何东西的攻击，永不消失。绿墙：有生命值，被攻击后会消失。
  *
- * @author 赵扬 邵潇璇
+ * @author 赵扬 邵潇漩
  * @version 0.1
  */
 //墙工厂
@@ -14,9 +14,9 @@ public class WallFactory implements Runnable{
     //随机生成五个绿墙和五个黑墙
     @Override
     public void run() {
-        for (int i = 0 ; i <= 4 ; i++){
-            new BlackWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 50, 50);
-            new GreenWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 50, 50, 50);
+        for (int i = 0 ; i < 5 ; i++){
+            new BlackWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 25, 50);
+            new GreenWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 25, 50, 50);
         }
     }
     //绿墙
@@ -49,7 +49,7 @@ public class WallFactory implements Runnable{
             //根据伤害值扣血
             this.strength-=offender.getDamage();
             //做出反击，反击伤害为0
-            offender.counterActed(0);
+            offender.counterActed(5);
             //生命值小于零则死亡
             if (this.strength<=0){
                 this.die();
@@ -96,7 +96,7 @@ public class WallFactory implements Runnable{
             for (OverlapSensitive overlapSensitive : Commons.overlapSensitiveSet){
                 if (Helper.checkOverlap(this,overlapSensitive) && overlapSensitive != this){
                     Helper.removeObjectFormCollectionCollection(this.collectionWhereIAm,this);
-                    new GreenWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50,50);
+                    new GreenWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),25,50,50);
                 }
             }
         }
@@ -135,7 +135,7 @@ public class WallFactory implements Runnable{
         @Override
         public void attacked(CanAttack offender) {
             //做出反击，反击伤害0
-            offender.counterActed(0);
+            offender.counterActed(5);
         }
 
         //获得中心点x
@@ -172,7 +172,7 @@ public class WallFactory implements Runnable{
             for (OverlapSensitive overlapSensitive : Commons.overlapSensitiveSet){
                 if (Helper.checkOverlap(this,overlapSensitive) && overlapSensitive != this){
                     Helper.removeObjectFormCollectionCollection(this.collectionWhereIAm,this);
-                    new BlackWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50);
+                    new BlackWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),25,50);
                 }
             }
         }

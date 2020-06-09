@@ -6,7 +6,7 @@ import java.util.Collection;
 /**
  * 功能 ：描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
  *
- * @author 赵扬 邵潇璇
+ * @author 赵扬 邵潇漩
  * @version 0.1
  */
 public class BladeSwitch {
@@ -23,10 +23,10 @@ public class BladeSwitch {
         this.y = y;
         this.w = w;
         this.h = h;
-        //上刀刃的左上角坐标和bladeSwitch相同，w也相同，但高度为一半
+        //上刀刃的x,y坐标和bladeSwitch相同，w也相同，但高度为一半
         Blade upBlade = new Blade(Movable.UP, this.x, this.y, this.w, this.h / 2,"imgs/Blade_Up.png");
-        //下刀刃的左上角坐标x，y坐标为bladeSwitch竖向中点，w相同，高度为一半
-        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h / 2, this.w, this.h / 2,"imgs/Blade_Down.png");
+        //下刀刃的左上角坐标和bladeSwitch相同，y坐标为bladeSwitch加上高度，w相同，高度为一半
+        Blade downBlade = new Blade(Movable.DOWN, this.x, this.y + this.h , this.w, this.h / 2,"imgs/Blade_Down.png");
             Commons.executorService.execute(upBlade);
             Commons.executorService.execute(downBlade);
     }
@@ -75,50 +75,40 @@ public class BladeSwitch {
             if (Commons.isStart == Commons.start) {
                 //周而复始地运动
                 //相背运动缩小，相对运动增大
-                //如果是下刀片，则先向下移再向上移
+                //如果是下刀片，则先向上变长再向下变短
                 if (this.attackDirection == Movable.DOWN) {
                     while (Commons.STATUS) {
                         for (int i = 0; i < 5; i++) {
-                            //下刀片下移
-                            this.y += 10;
-                            //缩小
-                            this.x += 5;
-                            this.w -= 5;
+                            //下面刀片的底不动，刀片向上变长
+                            this.h+=2;
+                            this.y-=2;
                             this.checkOverlap();
                             Helper.delay(100);
                             Commons.drawingPanel.repaint();
                         }
                         for (int i = 0; i < 5; i++) {
-                            //下刀片上移
-                            this.y -= 10;
-                            //放大
-                            this.x -= 5;
-                            this.w += 5;
+                            //下面刀片的底不动，刀片向下变短
+                            this.h-=2;
+                            this.y+=2;
                             this.checkOverlap();
                             Helper.delay(100);
                             Commons.drawingPanel.repaint();
                         }
                     }
                 }
-                //如果是上刀片，则先向上移再向下移
+                //如果是上刀片，则先向下变长再向上变短
                 if (this.attackDirection == Movable.UP) {
                     while (Commons.STATUS) {
                         for (int i = 0; i < 5; i++) {
-                            //上刀片上移
-                            this.y -= 10;
-                            //缩小
-                            this.x += 5;
-                            this.w -= 5;
+                            //上面刀片的顶不动，刀片向下变长
+                            this.h+=2;
                             this.checkOverlap();
                             Helper.delay(100);
                             Commons.drawingPanel.repaint();
                         }
                         for (int i = 0; i < 5; i++) {
-                            //上刀片下移
-                            this.y += 10;
-                            //放大
-                            this.x -= 5;
-                            this.w += 5;
+                            //上面刀片的顶不动，刀片向上变短
+                            this.h-=2;
                             this.checkOverlap();
                             Helper.delay(100);
                             Commons.drawingPanel.repaint();
