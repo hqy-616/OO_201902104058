@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * 描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
+ * 功能 ：描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
+ *
+ * @author 赵扬 邵潇璇
+ * @version 0.1
  */
 public class BladeSwitch {
 
