@@ -140,7 +140,7 @@ public class Shell implements Shape,Runnable, OverlapSensitive, CanAttack, CanBe
     @Override
     public void run() {
         //移动30次后消失
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 50; i++) {
             //如果不再活着(被其它物体消灭)，则退出循环
             if (!isAlive) {
                 break;

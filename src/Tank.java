@@ -159,6 +159,9 @@ public class Tank implements Shape, Movable, OverlapSensitive, CanAttack, CanBeA
     public void counterActed(int damage) {
         //减少生命值
         this.strength -= damage;
+        if(this.strength<0){
+            Commons.gameOver.defeat();
+        }
         //检查存活状态
         if (this.strength < 0) {
             Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm, this);
