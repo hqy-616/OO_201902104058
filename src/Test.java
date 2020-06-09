@@ -6,8 +6,11 @@ public class Test {
         new Barrier(50, 175, 50, 50);
         new Scoring(150, 5, 30, 60);
         new DashBoard(510, 5, 30, 74);
-        DownCounter timer = new DownCounter(5, 5, 30, 100);
         new Bomb(80, 130, 50, 50, 20);
+        DownCounter timer = new DownCounter(5, 5, 30, 100);
+        FirstAidFactory firstAidFactory = new FirstAidFactory();
+        BarrierFactory barrierFactory = new BarrierFactory();
+        ShellAddKitFactory shellAddKitFactory= new ShellAddKitFactory();
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
         new BladeSwitch(400,70,70,50);
@@ -23,7 +26,10 @@ public class Test {
         Commons.executorService.execute(firstAid);
         Commons.executorService.execute(timer);
         Commons.executorService.execute(tank);
+        Commons.executorService.execute(firstAidFactory);
+        Commons.executorService.execute(barrierFactory);
+        Commons.executorService.execute(shellAddKitFactory);
         Commons.executorService.execute(new WallFactory());
-        Commons.executorService.execute(new BunkerFactory());
+
     }
 }
