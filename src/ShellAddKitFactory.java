@@ -9,7 +9,7 @@ public class ShellAddKitFactory implements Runnable {
         @Override
         public void run() {
             //当游戏开始是执行
-            while (Commons.STATUS) {
+            while (Commons.STATUS&&Commons.isStart == Commons.start) {
                 //当时间大于30且生产的数量少于10个时，在2-3秒内随机生产一个炸药包
                 if(DownCounter.time>30&&this.number<10){
                     //产生炸药包的随机范围
