@@ -7,6 +7,7 @@ public class Test {
         new Scoring(150, 5, 30, 60);
         new DashBoard(510, 5, 30, 74);
         DownCounter timer = new DownCounter(5, 5, 30, 100);
+        new Bomb(80, 130, 50, 50, 20);
         //创建控制面板对象，并使之关联tank对象
         KeyControlPanel keyControlPanel = new KeyControlPanel(tank);
         new BladeSwitch(400,70,70,50);
