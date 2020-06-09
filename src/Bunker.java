@@ -1,5 +1,11 @@
 import java.awt.*;
 
+/**
+ * 功能 ：碉堡在随机时间向随机方向发射Shell对象，这些Shell对象不能攻击碉堡
+ *
+ * @author 李笑 王兆娣
+ * @version 0.1
+ */
 public class Bunker implements Shape,Runnable{
     {
         Commons.shapeSet.add(this);

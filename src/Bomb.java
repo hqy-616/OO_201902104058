@@ -1,16 +1,12 @@
-/**
- * 功能 ：设计一个定时炸弹。时间到达后，发生爆炸，期体积扩大到4倍（中心不变），攻击它覆盖范围的物体。
- *
- * @author 王兆娣 李笑
- * @version 0.1
- */
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * 定时炸弹
- * 左上角显示剩余时间，时间到达后，变成一个爆炸的图片，而且会越来越大。它重叠的物体都被攻击。
+ * 功能 ：定时炸弹。时间到达后，发生爆炸，期体积扩大到4倍（中心不变），攻击它覆盖范围的物体。
+ *
+ * @author 王兆娣 李笑
+ * @version 0.1
  */
 public final class Bomb implements Shape, Runnable, OverlapSensitive, CanBeAttacked, CanAttack {
     //杀伤力
