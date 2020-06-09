@@ -22,7 +22,6 @@ public class Scoring implements Shape {
         Helper.addObjectToCollectionCollection(this.collectionCollection, this, Commons.shapeSet);
     }
     public Scoring() {
-
     }
     public Scoring(int x, int y, int h, int w) {
         this.x = x;

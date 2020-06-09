@@ -7,7 +7,7 @@ import java.util.Iterator;
 /**
  * 描述两个把刀片，相向运动，背向分离，周而复始。两个刀片重叠任何物体，即为攻击，伤害值为1000。
  */
-public class BladeSwitch {
+public class BladeSwitch{
 
     //x,y为左上角坐标
     private int x;
@@ -150,10 +150,12 @@ public class BladeSwitch {
         }
 
         @Override
-        public void beCounterAttacked(int damage) {
-            this.strength -= damage;
+        public void beCounterAttacked(int counterAttackDamageFromVictim) {
+            this.strength -= counterAttackDamageFromVictim;
+            Helper.removeObjectFormCollectionCollection(this.collectionCollection,this);
         }
-        @Override
+
+
         public void drawMyself(Graphics g) {
             g.drawRect(this.x, this.y, this.w, this.h);
             g.drawImage(ImgHelper.getImage(this.name),this.x,this.y,this.w,this.h,null);
