@@ -4,18 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
-    {
-        this.collectionsWhereIAm = new ArrayList<>();
-        /*
-            调用addObjectToCollectionCollection将自己分别加入canBeAttackedSet，obstacleSet，shapeSet，overlapSensitiveSet，
-            以便能被 Commons.drawingPanelForSet通知画出，可以被检查重叠，可以被攻击，
-            并且将自己所在的集合都加入到collectionCollection这个集合中
-        */
-        Helper.addObjectToCollectionCollection(this.collectionsWhereIAm,this,
-                Commons.canBeAttackedSet, Commons.shapeSet, Commons.overlapSensitiveSet
-                );
-        Commons.survive+=1;
-    }
+    private static int amount = 0;
     public Barrier() {
     }
     public Barrier(int x, int y, int w, int h) {
@@ -50,6 +39,24 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         return this.h;
     }
 
+    {
+        this.collectionsWhereIAm = new ArrayList<>();
+        /*
+            调用addObjectToCollectionCollection将自己分别加入canBeAttackedSet，obstacleSet，shapeSet，overlapSensitiveSet，
+            以便能被 Commons.drawingPanelForSet通知画出，可以被检查重叠，可以被攻击，
+            并且将自己所在的集合都加入到collectionCollection这个集合中
+        */
+        Helper.addObjectToCollectionCollection(this.collectionsWhereIAm, this,
+                Commons.canBeAttackedSet, Commons.shapeSet, Commons.overlapSensitiveSet
+        );
+        Barrier.amount++;
+        Commons.survive += 1;
+    }
+
+    public static int getAmount() {
+        return amount;
+    }
+
     //造成伤害
     @Override
     public void attacked(CanAttack offender) {
@@ -57,30 +64,23 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
         offender.counterActed(this.strength / 2);
         this.strength -= offender.getDamage();
         //当生命值小于等于0时消失
-        if (this.strength <= 0){
+        if (this.strength <= 0) {
             this.die();
         }
     }
-    private void die(){
-        //从自己存在的集合中删除自己
-        Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm,this);
-        Commons.integral+=5;
-        Commons.survive-=1;
-        if (Commons.survive<=0){
-            Commons.gameOver.victory();
-        }
-    }
+
     //画出自己
     @Override
-    public void drawMyself(Graphics g){
-        g.drawRect(this.x,this.y,this.w,this.h);
+    public void drawMyself(Graphics g) {
+        g.drawRect(this.x, this.y, this.w, this.h);
         //画出障碍物当前的状态
-        g.drawString("barrier 血量:"+this.strength,this.x,this.y);
+        g.drawString("barrier 血量:" + this.strength, this.x, this.y);
         //获得barrier.png文件对应的Image类型对象
         Image image = ImgHelper.getImage("imgs/barrier.png");
         //画出自己
-        g.drawImage(image,this.x,this.y,this.w,this.h,null);
+        g.drawImage(image, this.x, this.y, this.w, this.h, null);
     }
+
     //x,y为左上角坐标
     private int x;
     private int y;
@@ -91,4 +91,18 @@ public class Barrier implements Shape, CanBeAttacked, OverlapSensitive {
     private int strength = 30;
     //自身存在与哪些集合中
     private Collection<Collection> collectionsWhereIAm;
+
+    private void die() {
+        //从自己存在的集合中删除自己
+        Helper.removeObjectFormCollectionCollection(this.collectionsWhereIAm, this);
+        //减少对象的数量统计值
+        Barrier.amount--;
+        //刷新
+        Commons.drawingPanel.repaint();
+        Commons.integral += 5;
+        Commons.survive -= 1;
+        if (Commons.survive <= 0) {
+            Commons.gameOver.victory();
+        }
+    }
 }

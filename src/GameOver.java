@@ -13,10 +13,11 @@ public class GameOver  {
         Commons.canBeAttackedSet.clear();
         Commons.overlapSensitiveSet.clear();
         Commons.canProvideStrengthSet.clear();
-        new Endinterface(0,0,600,600,"imgs/defeat.png");
-        Commons.executorService.shutdown();
-        Commons.isStart=Commons.end;
-        Commons.isSuccess=Commons.loser;
+        new Endinterface(0, 0, 600, 600, "imgs/defeat.png");
+        //不能关闭，因为此时可能还有线程尚未完全完成任务。
+//        Commons.executorService.shutdown();
+        Commons.isStart = Commons.end;
+        Commons.isSuccess = Commons.loser;
     }
     public void victory(){
         Commons.shapeSet.clear();
@@ -24,7 +25,7 @@ public class GameOver  {
         Commons.overlapSensitiveSet.clear();
         Commons.canProvideStrengthSet.clear();
         new Endinterface(0,0,600,600,"imgs/victory.png");
-        Commons.executorService.shutdown();
+//        Commons.executorService.shutdown();
         Commons.isStart=Commons.end;
         Commons.isSuccess=Commons.success;
     }

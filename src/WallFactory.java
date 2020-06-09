@@ -3,17 +3,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-/*
-随机产生两种类型的墙（各五块）。黑墙：阻挡任何东西的攻击，永不消失。绿墙：有生命值，被攻击后会消失。
-*/
+/**
+ * 功能 ：随机产生两种类型的墙（各五块）。黑墙：阻挡任何东西的攻击，永不消失。绿墙：有生命值，被攻击后会消失。
+ *
+ * @author 赵扬 邵潇璇
+ * @version 0.1
+ */
 //墙工厂
 public class WallFactory implements Runnable{
     //随机生成五个绿墙和五个黑墙
     @Override
     public void run() {
         for (int i = 0 ; i <= 4 ; i++){
-            new BlackWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 50, 50);
-            new GreenWall((int) (1 + Math.random() * 500), (int) (1 + Math.random() * 500), 50, 50, 50);
+            new BlackWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 50, 50);
+            new GreenWall((int) (1 + Math.random() * 1000), (int) (1 + Math.random() * 500), 50, 50, 50);
         }
     }
     //绿墙

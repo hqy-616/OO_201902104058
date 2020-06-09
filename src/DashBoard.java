@@ -34,9 +34,9 @@ public class DashBoard implements Shape{
 
     @Override
     public void drawMyself(Graphics g) {
-        g.drawString("剩余路障:" + Commons.survive, this.x + 8, this.y + 17);
-        g.drawRect(this.x,this.y,this.w,this.h);
-        Commons.drawingPanel.repaint();
+        g.drawString("剩余路障:" + Barrier.getAmount(), this.x + 8, this.y + 17);
+        g.drawRect(this.x, this.y, this.w, this.h);
+//        Commons.drawingPanel.repaint();
     }
     //x,y为左上角坐标
     private int x;
