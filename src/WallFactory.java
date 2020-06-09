@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+
 /*
 随机产生两种类型的墙（各五块）。黑墙：阻挡任何东西的攻击，永不消失。绿墙：有生命值，被攻击后会消失。
 */
@@ -34,6 +36,8 @@ public class WallFactory implements Runnable{
             this.w = w;
             this.h = h;
             this.strength = strength;
+            //检测对象重叠
+            this.checkAOverlap();
         }
 
         //被攻击
@@ -84,6 +88,15 @@ public class WallFactory implements Runnable{
             Helper.removeObjectFormCollectionCollection(this.collectionWhereIAm,this);
             Commons.drawingPanel.repaint();
         }
+        //如果重叠物体，则删除自己再新建一个新的绿墙对象
+        private void checkAOverlap(){
+            for (OverlapSensitive overlapSensitive : Commons.overlapSensitiveSet){
+                if (Helper.checkOverlap(this,overlapSensitive) && overlapSensitive != this){
+                    Helper.removeObjectFormCollectionCollection(this.collectionWhereIAm,this);
+                    new GreenWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50,50);
+                }
+            }
+        }
         //左上角坐标
         private int x,y;
         //宽度高度
@@ -112,6 +125,8 @@ public class WallFactory implements Runnable{
             this.y = y;
             this.w = w;
             this.h = h;
+            //检测重叠
+            this.checkAOverlap();
         }
         //被攻击
         @Override
@@ -148,6 +163,15 @@ public class WallFactory implements Runnable{
         @Override
         public void drawMyself(Graphics g) {
             g.drawImage(ImgHelper.getImage("imgs/BlackWall.png"),this.x,this.y,this.w,this.h,null);
+        }
+        //如果重叠物体，则删除自己再新建一个新的黑墙对象
+        private void checkAOverlap(){
+            for (OverlapSensitive overlapSensitive : Commons.overlapSensitiveSet){
+                if (Helper.checkOverlap(this,overlapSensitive) && overlapSensitive != this){
+                    Helper.removeObjectFormCollectionCollection(this.collectionWhereIAm,this);
+                    new BlackWall((int)(1+Math.random()*500),(int)(1+Math.random()*500),50,50);
+                }
+            }
         }
 
         //左上角xy
